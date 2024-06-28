@@ -8,9 +8,12 @@
     - Múltiplos de 5 por la palabra "buzz".
     - Múltiplos de 3 y de 5 a la vez por la palabra "fizzbuzz".
 """
-for numero in range(1, 101):
-    resultado  = "fizz" if numero % 3 == 0 else ""
-    resultado += "buzz" if numero % 5 == 0 else ""
-    resultado  = resultado or str(numero)
 
-    print(resultado)
+for numero in range(1, 101):
+    es_multiplo_3: bool = numero % 3 == 0
+    es_multiplo_5: bool = numero % 5 == 0
+
+    print(
+        f"{'fizz' if es_multiplo_3 else ''}" f"{'buzz' if es_multiplo_5 else ''}"
+        or str(numero)
+    )

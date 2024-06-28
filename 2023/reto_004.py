@@ -4,6 +4,8 @@
     Escribe un programa que se encargue de comprobar si un número es o no primo.
     Hecho esto, imprime los números primos entre 1 y 100.
 """
+
+
 # Comprobar si un número es primo (divisible sólo por sí mismo y por 1)
 def es_primo(numero: int) -> bool:
     if numero <= 1:
@@ -14,6 +16,7 @@ def es_primo(numero: int) -> bool:
             return False
 
     return True
+
 
 # Función principal
 if __name__ == "__main__":

@@ -7,13 +7,17 @@
       la que el siguiente siempre es la suma de los dos anteriores.
       0, 1, 1, 2, 3, 5, 8, 13...
 """
+
 from typing import List
 import sys
 import os
 
+sys.set_int_max_str_digits(1000000)
+
+
 # Generar secuencia de Fibonacci
 def fibonacci(numero: int = 49) -> List[int]:
-    sucesion_fib = []
+    sucesion_fib: List[int] = []
 
     for posicion in range(0, numero + 1):
         if posicion in (0, 1):
@@ -23,9 +27,11 @@ def fibonacci(numero: int = 49) -> List[int]:
 
     return sucesion_fib
 
+
 # Imprimir lista
 def print_lista(lista: List[int]):
     print(", ".join(str(num) for num in lista))
+
 
 # Función principal
 if __name__ == "__main__":
@@ -39,7 +45,7 @@ if __name__ == "__main__":
                 print_lista(fibonacci(num))
             else:
                 print("Error: El argumento debe ser un número >= 0")
-        except ValueError:
-            print("Error: El argumento debe ser un número >= 0")
+        except ValueError as e:
+            print(f"Error: {e}")
     else:
         print(f"Sintaxis de llamada: {os.path.basename(sys.argv[0])} [número]")

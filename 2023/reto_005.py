@@ -7,7 +7,9 @@
     - Los polígonos soportados serán Triángulo, Cuadrado y Rectángulo.
     - Imprime el cálculo del área de un polígono de cada tipo.
 """
+
 from abc import ABC, abstractmethod
+
 
 # Clase genérica: Polígono
 class Poligono(ABC):
@@ -19,21 +21,24 @@ class Poligono(ABC):
     def mostrar_area(self):
         pass
 
+
 # Clase Polígono: Triángulo
 class Triangulo(Poligono):
     def __init__(self, base: float, altura: float):
-        self.base   = base
+        self.base = base
         self.altura = altura
 
     def calcular_area(self) -> float:
         return self.base * self.altura / 2.0
 
     def mostrar_area(self):
-        print("Área del triángulo ("
+        print(
+            "Área del triángulo ("
             f"base = {self.base:.3f}, "
             f"altura = {self.altura:.3f}) = "
             f"{self.calcular_area():.3f}"
         )
+
 
 # Clase Polígono: Rectángulo
 class Rectangulo(Poligono):
@@ -45,11 +50,13 @@ class Rectangulo(Poligono):
         return self.largo * self.ancho
 
     def mostrar_area(self):
-        print("Área del rectángulo ("
+        print(
+            "Área del rectángulo ("
             f"largo = {self.largo:.3f}, "
             f"ancho = {self.ancho:.3f}) = "
             f"{self.calcular_area():.3f}"
         )
+
 
 # Clase Polígono: Cuadrado
 class Cuadrado(Poligono):
@@ -60,16 +67,19 @@ class Cuadrado(Poligono):
         return self.lado * self.lado
 
     def mostrar_area(self):
-        print("Área del cuadrado ("
+        print(
+            "Área del cuadrado ("
             f"lado = {self.lado:.3f}) = "
             f"{self.calcular_area():.3f}"
         )
+
 
 # Calcular y mostrar el área de un Polígono
 def area(poligono: Poligono):
     poligono.mostrar_area()
 
     return poligono.calcular_area()
+
 
 # Función principal
 if __name__ == "__main__":
