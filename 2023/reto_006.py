@@ -10,41 +10,35 @@
 """
 
 from io import BytesIO
+from math import gcd
 
 import requests
 from PIL import Image
 
 
-# Calcular el máximo común divisor (MCD) de dos números
-def mcd(n1, n2: int):
-    while n2:
-        n1, n2 = n2, n1 % n2
-
-    return n1
-
-
 # Obtener el 'aspect ratio' de una imagen
 def get_aspect_ratio(url: str) -> str:
     # Descargar la imagen
+    img = ""
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()
 
         try:
-            image = Image.open(BytesIO(response.content))
+            img = Image.open(BytesIO(response.content))
         except IOError:
             print("Error al intentar abrir la imagen.")
     except requests.exceptions.RequestException as e:
         print(f"Error al obtener la respuesta: {e}")
 
     response = requests.get(url, timeout=10)
-    image = Image.open(BytesIO(response.content))
+    img = Image.open(BytesIO(response.content))
 
     # Obtener las dimensiones
-    width, height = image.size
+    width, height = img.size
 
     # Calcular 'aspect ratio' y devolver
-    common_div: int = mcd(width, height)
+    common_div: int = gcd(width, height)
     ratio_width: int = width // common_div
     ratio_height: int = height // common_div
 
@@ -53,7 +47,7 @@ def get_aspect_ratio(url: str) -> str:
 
 # Función principal
 if __name__ == "__main__":
-    imagenes = [
+    images = [
         "https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png",
         "https://images.unsplash.com/photo-1433086966358-54859d0ed716",
         "https://images.unsplash.com/photo-1542372712-fc07597133cd",
@@ -65,5 +59,5 @@ if __name__ == "__main__":
         "https://wallpaperaccess.com/full/4205192.jpg",
     ]
 
-    for imagen in imagenes:
-        print(f"Imagen......: {imagen}\nAspect Ratio: {get_aspect_ratio(imagen)}\n")
+    for image in images:
+        print(f"Imagen......: {image}\nAspect Ratio: {get_aspect_ratio(image)}\n")
