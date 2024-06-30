@@ -44,4 +44,4 @@ if __name__ == "__main__":
 
     for expression in expressions:
         result: str = "SÍ" if is_balanced(expression) else "NO"
-        print(f"¿Está balanceada la expresión: '{expression}' ? {result}")
+        print(f"La expresión {result} está balanceada: '{expression}'")
