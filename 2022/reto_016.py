@@ -15,15 +15,22 @@ from datetime import datetime
 
 # Calcular la diferencia absoluta en días entre 2 fechas
 def datediff_days(date1_str: str, date2_str: str) -> int:
-    date1 = datetime.strptime(date1_str, "%d/%m/%Y")
-    date2 = datetime.strptime(date2_str, "%d/%m/%Y")
+    try:
+        date1 = datetime.strptime(date1_str, "%d/%m/%Y")
+        date2 = datetime.strptime(date2_str, "%d/%m/%Y")
 
-    return abs((date2 - date1).days)
+        return abs((date2 - date1).days)
+    except (ValueError, TypeError) as e:
+        print(f"Error: {e}")
+
+        return -1
 
 
 # Función principal
 if __name__ == "__main__":
     date_tuples = [
+        ("01/01/1900", 31564),
+        ("30/02/1900", "15/01/1900"),
         ("01/01/1900", "15/01/1900"),
         ("28/02/2101", "02/02/2101"),
         ("06/06/1969", "30/06/2024"),
