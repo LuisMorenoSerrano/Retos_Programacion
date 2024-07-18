@@ -5,13 +5,21 @@
     Hecho esto, imprime los números primos entre 1 y 100.
 """
 
+import math
+
 
 # Comprobar si un número es primo (divisible sólo por sí mismo y por 1)
 def es_primo(numero: int) -> bool:
     if numero <= 1:
         return False
 
-    for divisor in range(2, numero):
+    if numero == 2:
+        return True
+
+    if numero % 2 == 0:
+        return False
+
+    for divisor in range(3, int(math.sqrt(numero)) + 1, 2):
         if numero % divisor == 0:
             return False
 

@@ -9,38 +9,52 @@
     - Dos palabras exactamente iguales no son anagrama.
 """
 
-# Lista de palabras a comprobar
-pares_palabras = [
-    ("NoEsAnagrama", "NoEsAnagrama"),
-    ("Legado", "Colega"),
-    ("Pace", "Cepa"),
-    ("Retama", "Madera"),
-    ("Daba", "Abad"),
-    ("Zorra", "Arroz"),
-    ("Arroz", "Rozar"),
-    ("Monja", "Jamón"),
-    ("Monja", "Jamon"),
-    ("Alegan", "Ángela"),
-    ("Conservadora", "Conversadora"),
-    ("SetecAstronomy", "MontereysCoast"),
-    ("SetecAstronomy", "MySocratesNote"),
-    ("SetecAstronomy", "TooManySecrets"),
-]
+from collections import Counter
+import unicodedata
 
-# Longitud máxima de palabra, incluyendo el delimitador (comilla)
-max_long: int = max(len(palabra) for par in pares_palabras for palabra in par) + 2
+
+# Normalizar las palabras eliminando caracteres especiales y convirtiendo a minúsculas
+def normalizar_palabra(palabra):
+    return "".join(
+        c
+        for c in unicodedata.normalize("NFD", palabra)
+        if unicodedata.category(c) != "Mn"
+    ).lower()
 
 
 # Comprobar si las 2 palabras son anagramas
-def es_anagrama(palabra1, palabra2: str) -> bool:
+def es_anagrama(palabra1, palabra2):
     if palabra1.lower() == palabra2.lower():
         return False
 
-    return sorted(palabra1.lower()) == sorted(palabra2.lower())
+    return Counter(normalizar_palabra(palabra1)) == Counter(
+        normalizar_palabra(palabra2)
+    )
 
 
 # Función principal
 if __name__ == "__main__":
+    # Lista de palabras a comprobar
+    pares_palabras = [
+        ("NoEsAnagrama", "NoEsAnagrama"),
+        ("Legado", "Colega"),
+        ("Pace", "Cepa"),
+        ("Retama", "Madera"),
+        ("Daba", "Abad"),
+        ("Zorra", "Arroz"),
+        ("Arroz", "Rozar"),
+        ("Monja", "Jamón"),
+        ("Monja", "Jamon"),
+        ("Alegan", "Ángela"),
+        ("Conservadora", "Conversadora"),
+        ("SetecAstronomy", "MontereysCoast"),
+        ("SetecAstronomy", "MySocratesNote"),
+        ("SetecAstronomy", "TooManySecrets"),
+    ]
+
+    # Longitud máxima de palabra, incluyendo el delimitador (comilla)
+    max_long: int = max(len(palabra) for par in pares_palabras for palabra in par) + 2
+
     for par in pares_palabras:
         resultado: str = "SÍ" if es_anagrama(par[0], par[1]) else "NO"
         print(

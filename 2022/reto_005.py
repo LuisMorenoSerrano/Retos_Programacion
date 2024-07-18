@@ -13,65 +13,76 @@ from abc import ABC, abstractmethod
 
 # Clase genérica: Polígono
 class Poligono(ABC):
+    def __init__(self, nombre):
+        self._nombre = nombre
+
+    @property
+    def nombre(self):
+        return self._nombre
+
+    def mostrar_area(self):
+        print(
+            f"Área del {self.nombre} "
+            f"({self.detalles_especificos()}) = "
+            f"{self.calcular_area():.3f}"
+        )
+
     @abstractmethod
     def calcular_area(self):
         pass
 
     @abstractmethod
-    def mostrar_area(self):
+    def detalles_especificos(self):
         pass
 
 
 # Clase Polígono: Triángulo
 class Triangulo(Poligono):
+    base: float
+    altura: float
+
     def __init__(self, base: float, altura: float):
+        super().__init__("triángulo")
         self.base = base
         self.altura = altura
 
     def calcular_area(self) -> float:
         return self.base * self.altura / 2.0
 
-    def mostrar_area(self):
-        print(
-            "Área del triángulo ("
-            f"base = {self.base:.3f}, "
-            f"altura = {self.altura:.3f}) = "
-            f"{self.calcular_area():.3f}"
-        )
+    def detalles_especificos(self):
+        return f"base = {self.base:.3f}, altura = {self.altura:.3f}"
 
 
 # Clase Polígono: Rectángulo
 class Rectangulo(Poligono):
+    largo: float
+    ancho: float
+
     def __init__(self, largo: float, ancho: float):
+        super().__init__("rectángulo")
         self.largo = largo
         self.ancho = ancho
 
     def calcular_area(self) -> float:
         return self.largo * self.ancho
 
-    def mostrar_area(self):
-        print(
-            "Área del rectángulo ("
-            f"largo = {self.largo:.3f}, "
-            f"ancho = {self.ancho:.3f}) = "
-            f"{self.calcular_area():.3f}"
-        )
+    def detalles_especificos(self):
+        return f"largo = {self.largo:.3f}, ancho = {self.ancho:.3f}"
 
 
 # Clase Polígono: Cuadrado
 class Cuadrado(Poligono):
+    lado: float
+
     def __init__(self, lado: float):
+        super().__init__("cuadrado")
         self.lado = lado
 
     def calcular_area(self) -> float:
-        return self.lado * self.lado
+        return self.lado**2
 
-    def mostrar_area(self):
-        print(
-            "Área del cuadrado ("
-            f"lado = {self.lado:.3f}) = "
-            f"{self.calcular_area():.3f}"
-        )
+    def detalles_especificos(self):
+        return f"lado = {self.lado:.3f}"
 
 
 # Calcular y mostrar el área de un Polígono
