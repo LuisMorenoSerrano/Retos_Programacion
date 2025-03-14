@@ -9,12 +9,11 @@
       lo resuelvan automáticamente.
 """
 
-from typing import Dict
 import re
 
 
 # Detecta palabras del texto y cuenta el número de apariciones
-def count_words(txt: str) -> Dict[str, int]:
+def count_words(txt: str) -> dict[str, int]:
     # Obtener lista de palabras
     words_list = re.findall(r"\b\w+\b", txt)
 

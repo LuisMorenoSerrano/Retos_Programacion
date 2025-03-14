@@ -9,7 +9,6 @@
       estén presentes en str1.
 """
 
-from typing import List
 import unicodedata
 
 
@@ -31,7 +30,7 @@ def find_chars_non_common(str_in1: str, str_in2: str) -> str:
 
 
 # Mostrar caracteres de cada cadena que no están en la otra cadena
-def print_chars_non_common(str_in: List[str]):
+def print_chars_non_common(str_in: list[str]):
     print(
         f"Entrada 1: {str_in[0]}\n"
         f"Entrada 2: {str_in[1]}\n"

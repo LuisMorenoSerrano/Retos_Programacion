@@ -1,4 +1,6 @@
 """
+    RETO #030: ORDENA LA LISTA
+
     Crea una función que ordene y retorne una matriz de números.
     - La función recibirá un listado (por ejemplo [2, 4, 6, 8, 9]) y un parámetro
       adicional "Asc" o "Desc" para indicar si debe ordenarse de menor a mayor
@@ -7,11 +9,9 @@
       automáticamente.
 """
 
-from typing import List
-
 
 # Ordenar listas de números
-def order_numbers(nums: List[int], order: str) -> List[int]:
+def order_numbers(nums: list[int], order: str) -> list[int]:
     # Control de errores
     if not all(isinstance(num, int) for num in nums):
         raise TypeError("La lista debe contener solo números enteros.")

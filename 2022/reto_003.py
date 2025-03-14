@@ -8,7 +8,6 @@
       0, 1, 1, 2, 3, 5, 8, 13...
 """
 
-from typing import List
 import sys
 import os
 
@@ -16,8 +15,8 @@ sys.set_int_max_str_digits(1000000)
 
 
 # Generar secuencia de Fibonacci
-def fibonacci(numero: int = 49) -> List[int]:
-    sucesion_fib: List[int] = []
+def fibonacci(numero: int = 49) -> list[int]:
+    sucesion_fib: list[int] = []
 
     for posicion in range(0, numero + 1):
         if posicion in (0, 1):
@@ -29,7 +28,7 @@ def fibonacci(numero: int = 49) -> List[int]:
 
 
 # Imprimir lista
-def print_lista(lista: List[int]):
+def print_lista(lista: list[int]):
     print(", ".join(str(num) for num in lista))
 
 

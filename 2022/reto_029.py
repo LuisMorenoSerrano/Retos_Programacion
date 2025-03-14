@@ -1,4 +1,6 @@
 """
+    RETO #029: MÁQUINA EXPENDEDORA
+
     Simula el funcionamiento de una máquina expendedora creando una operación
     que reciba dinero (array de monedas) y un número que indique la selección
     del producto.
@@ -11,8 +13,6 @@
       de 5, 10, 50, 100 y 200.
     - Debemos controlar que las monedas enviadas estén dentro de las soportadas.
 """
-
-from typing import List, Tuple
 
 # Lista de productos para la máquina expendedora
 products = [
@@ -33,7 +33,7 @@ coins = [5, 10, 50, 100, 200]
 
 
 # Simular el funcionamiento de la máquina expendedora
-def supply_product(money: List[int], product_id: int) -> Tuple[str, int, List[int]]:
+def supply_product(money: list[int], product_id: int) -> tuple[str, int, list[int]]:
     # Control de errores
     if not all(isinstance(coin, int) for coin in money):
         raise TypeError("El dinero enviado debe ser una lista de enteros.")
