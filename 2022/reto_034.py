@@ -41,7 +41,8 @@ def get_chinese_zodiac(year: int) -> tuple[str, str]:
     position = abs(year - start_year) % 60
 
     # Obtener el elemento y animal correspondiente
-    element = chinese_zodiac["elements"][position // 10]
+    # Cada elemento dura 2 años (10 elementos / 5 elements = 2 años por elemento)
+    element = chinese_zodiac["elements"][(position // 2) % 5]
     animal = chinese_zodiac["animals"][position % 12]
 
     return element, animal
