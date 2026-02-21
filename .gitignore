@@ -3,7 +3,12 @@
 
 # Python
 __pycache__/
+*/__pycache__/
+**/__pycache__/
 *.py[cod]
+*.pyc
+*.pyo
+*.pyd
 *$py.class
 *.so
 *.egg
@@ -12,6 +17,7 @@ dist/
 build/
 .eggs/
 .pytest_cache/
+*.py.class
 
 # Virtual environments
 .env
