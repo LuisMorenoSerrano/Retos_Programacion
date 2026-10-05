@@ -11,6 +11,8 @@ from abc import ABC, abstractmethod
 
 # Clase genérica: Polígono regular
 class RegularPolygon(ABC):
+    """Clase base para polígonos regulares que pueden dibujarse."""
+
     def __init__(self, num_sides: int, side_length: int):
         self._num_sides: int = num_sides
         self._side_length: int = side_length
@@ -42,6 +44,8 @@ class RegularPolygon(ABC):
 
 # Clase Polígono regular: Triángulo
 class Triangle(RegularPolygon):
+    """Representa un triángulo dibujado con asteriscos."""
+
     def __init__(self, side_length: int):
         super().__init__(3, side_length)
 
@@ -62,6 +66,8 @@ class Triangle(RegularPolygon):
 
 # Clase Polígono regular: Cuadrado
 class Square(RegularPolygon):
+    """Representa un cuadrado dibujado con asteriscos."""
+
     def __init__(self, side_length: int):
         super().__init__(4, side_length)
 
@@ -84,6 +90,8 @@ class Square(RegularPolygon):
 
 # Clase Polígono regular: Rombo
 class Diamond(RegularPolygon):
+    """Representa un rombo dibujado con asteriscos."""
+
     def __init__(self, side_length: int):
         super().__init__(4, side_length)
 

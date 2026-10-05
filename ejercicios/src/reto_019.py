@@ -26,6 +26,8 @@ MSGS = {
 }
 
 class State(Enum):
+    """Estados posibles de una partida de tres en raya."""
+
     X    = "X"
     O    = "O"
     DRAW = "Empate"

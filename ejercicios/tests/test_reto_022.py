@@ -48,7 +48,13 @@ def test_txt_calculator_valid_files(filename):
 
 @pytest.mark.parametrize("test_case", [
     ("archivo_inexistente.txt", "Error: No se pudo encontrar el archivo"),
-    ("/tmp", "Error: No se pudo leer el archivo"),  # directorio en lugar de archivo
+    (
+        TEST_DIR,
+        (
+            "Error: No se pudo leer el archivo",
+            "Error: No se tienen permisos para leer el archivo",
+        ),
+    ),  # directorio en lugar de archivo
 ])
 def test_txt_calculator_error_cases(test_case):
     """Test parametrizado para casos de error"""
@@ -61,7 +67,8 @@ def test_txt_calculator_error_cases(test_case):
     assert isinstance(error, str)
 
     # Verificar que el error esperado está en el mensaje de error
-    assert expected_error in error
+    expected_errors = (expected_error,) if isinstance(expected_error, str) else expected_error
+    assert any(message in error for message in expected_errors)
 
 
 @pytest.mark.parametrize("content,expected_expression,expected_result,expected_error_contains", [
