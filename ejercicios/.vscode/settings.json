@@ -2,19 +2,11 @@
     "python.analysis.extraPaths": [
         "./src"
     ],
-    "python.analysis.include": [
-        "./src"
-    ],
     "python.testing.pytestEnabled": true,
-    "python.testing.pytestPath": "pytest",
     "python.testing.pytestArgs": [
+        "-c",
+        "../pytest.ini",
         "tests"
     ],
-    "python.defaultInterpreterPath": "./venv/bin/python",
-    "python.analysis.autoSearchPaths": true,
     "python.analysis.diagnosticMode": "workspace",
-    "python.analysis.diagnosticSeverityOverrides": {
-        "reportMissingImports": "none",
-        "reportMissingModuleSource": "none"
-    }
 }
